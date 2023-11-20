@@ -15,7 +15,7 @@ typedef signed long long int64;
 
 int main()
 {
-    FILE *input = fopen("1-1.txt", "r");
+    FILE *input = fopen("d1.txt", "r");
     char line[255];
     uint16 last = 0;
     uint32 increases = 0;

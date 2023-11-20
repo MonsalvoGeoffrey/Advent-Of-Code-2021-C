@@ -8,3 +8,4 @@ In this repository, I'll list all of my working code in the format `X-Y.c`, with
 
 Day 1, Challenge 1:
 - Opening and reading a file
+- atoi() for string to int converstion
