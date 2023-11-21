@@ -25,3 +25,8 @@ It's unnecessary, but I learned how Makefile works recently so that's good pract
 - `typedef char string[];` isn't that helpful to deal with strings, C has an obsession with having to know the length in advance
 - Riiiight, switch don't work on strings
 - strcpy is necessary to extract the value of a pointer to a string (Since strings are just array of characters, the pointer actually only points to the first character, the function strcpy probably loop over the pointer and the next elements until it find a null byte)
+
+### Day 3, Challenge 1:
+- How to do exponents
+- Think of using the example as a test case
+- `int myVar[MY_CONST] = {0};` can be used to have an array of size that depends on a constant (macro) value
