@@ -30,3 +30,21 @@ It's unnecessary, but I learned how Makefile works recently so that's good pract
 - How to do exponents
 - Think of using the example as a test case
 - `int myVar[MY_CONST] = {0};` can be used to have an array of size that depends on a constant (macro) value
+
+### Day 3, Challenge 2:
+- Implementing Vectors (simplified and only supports values of static sizes)
+- A lot of dynamic memory allocation
+- `malloc(size_in_byte)` to initilize what basically works as a manually mangaged array
+- `void*` pointers will support any type of data
+- Cast to `char*` to access individual bytes
+- Do not forget to free memory, ideally if you have a struct that contain dynamically allocated properties, have a function that free them all at once
+- `fprintf()` can print to stderr (or files)
+- Just because a struct contains a dynamically allocated property doesn't make the struct itself have a dynamic size, the property in question is just a pointer, which itself is of static size
+- `memcpy(destination address, address to pull from, length to pull)` from string.h to copy a continuous block of data
+- Return `NULL` to indicate an error since C doesn't support `raise()` or `throw()` (I didn't diligently apply that)
+- The `inline` keyword is annoying to work with and most of the time better avoided
+- `realloc(pointer, new size)` only move the data, don't forget to re-assing the pointer
+- `struct->property` translate to `(*struct)->property` as a shorthand to pull data from a pointer to a struct
+- `strtol(string, pointer to endpointer, base)` to parse number of non-10 base
+- C don't have ternary opperator
+- Do not forget, when you do a for loop backward and your condition is `i >= 0`.... don't use an unsigned number

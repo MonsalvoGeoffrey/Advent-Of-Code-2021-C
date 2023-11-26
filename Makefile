@@ -1,5 +1,3 @@
-
-
 CFILE=$(wildcard *.c)
 OUTPUTS=$(patsubst %.c,%.exe,$(CFILE))
 OPT=-O3

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "qol.h"
+#include "lib/qol.h"
 
 int main()
 {
