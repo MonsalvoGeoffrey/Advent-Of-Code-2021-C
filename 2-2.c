@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lib/qol.h"
+#include <stdint.h>
 
 typedef struct Position
 {
-    uint32 horizontal;
-    uint32 depth;
-    uint32 aim;
+    uint32_t horizontal;
+    uint32_t depth;
+    uint32_t aim;
 } Position;
 
 int main()
@@ -21,7 +21,7 @@ int main()
         char direction[255];
         char *pDirection = strtok(line, " ");
         strcpy(direction, pDirection);
-        uint16 value = atoi(strtok(NULL, " "));
+        uint16_t value = atoi(strtok(NULL, " "));
 
         // printf(direction);
         if (strcmp(direction, "forward") == 0)
@@ -37,13 +37,13 @@ int main()
         {
             submarine.aim += value;
         }
-        // println("%s | %d | %d", direction, distance, submarine.depth);
+        // printf("%s | %d | %d\n", direction, distance, submarine.depth);
     }
 
     fclose(input);
-    println("The horizontal distance is: %d", submarine.horizontal);
-    println("The depth distance is: %d", submarine.depth);
-    println("The horizontal and depth distance multiplied is: %d", submarine.horizontal * submarine.depth);
+    printf("The horizontal distance is: %d\n", submarine.horizontal);
+    printf("The depth distance is: %d\n", submarine.depth);
+    printf("The horizontal and depth distance multiplied is: %d\n", submarine.horizontal * submarine.depth);
 
     return 0;
 }

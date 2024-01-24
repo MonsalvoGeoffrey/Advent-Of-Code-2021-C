@@ -1,23 +1,23 @@
 #include <stdlib.h>
 #include <string.h>
-#include "qol.h"
+#include <stdint.h>
 
 typedef struct Vector
 {
-    uint32 size;
-    uint32 actualSize;
-    uint16 elementSize;
+    uint32_t size;
+    uint32_t actualSize;
+    uint16_t elementSize;
     void *data;
 } Vector;
 
-Vector *Vector_new(uint16 elementSize)
+Vector *Vector_new(uint16_t elementSize)
 {
     Vector *vector = malloc(sizeof(Vector));
     vector->size = 0;
     vector->actualSize = 8;
     vector->elementSize = elementSize;
     vector->data = malloc(elementSize * vector->actualSize);
-    for (uint32 i = 0; i < vector->actualSize * vector->elementSize; i++)
+    for (uint32_t i = 0; i < vector->actualSize * vector->elementSize; i++)
     {
         ((char *)vector->data)[i] = 0;
     }
@@ -33,7 +33,7 @@ void Vector_free(Vector *vector)
     free(vector);
 }
 
-void Vector_resize(Vector *vector, uint16 newSize)
+void Vector_resize(Vector *vector, uint16_t newSize)
 {
     vector->actualSize = newSize;
     void *newData = realloc(vector->data, vector->elementSize * vector->actualSize);
@@ -58,7 +58,7 @@ void Vector_push(Vector *vector, void *element)
     memcpy(destination, element, vector->elementSize);
 }
 
-void *Vector_get(Vector *vector, uint32 index)
+void *Vector_get(Vector *vector, uint32_t index)
 {
     if (index >= vector->size)
     {
@@ -70,7 +70,7 @@ void *Vector_get(Vector *vector, uint32 index)
     return (void *)element;
 }
 
-void Vector_insert(Vector *vector, void *element, uint32 index)
+void Vector_insert(Vector *vector, void *element, uint32_t index)
 {
     vector->size++;
     if (vector->size > vector->actualSize)
@@ -86,7 +86,7 @@ void Vector_insert(Vector *vector, void *element, uint32 index)
     memcpy(destination, element, vector->elementSize);
 }
 
-void Vector_remove(Vector *vector, uint32 index)
+void Vector_remove(Vector *vector, uint32_t index)
 {
     if (index >= vector->size)
     {
@@ -97,7 +97,7 @@ void Vector_remove(Vector *vector, uint32 index)
     memcpy(destination, (char *)destination + vector->elementSize, (vector->size - index + 1) * vector->elementSize);
 }
 
-uint32 Vector_length(Vector *vector)
+uint32_t Vector_length(Vector *vector)
 {
     return vector->size;
 }

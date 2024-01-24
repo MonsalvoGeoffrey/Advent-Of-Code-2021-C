@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib/qol.h"
+#include <stdint.h>
 
 int main()
 {
 
     FILE *input = fopen("d1.txt", "r");
     char line[255];
-    uint16 lasts[3] = {0, 0, 0};
-    uint32 increases = 0;
+    uint16_t lasts[3] = {0, 0, 0};
+    uint32_t increases = 0;
 
     while (fgets(line, 255, input) != NULL)
     {
-        uint16 current = atoi(line);
+        uint16_t current = atoi(line);
 
         // lasts[1] and lasts[2] are on both part of the comparaison and cancels eachother
         if (lasts[0] > 0 && current > lasts[0])
@@ -26,7 +26,7 @@ int main()
     }
 
     fclose(input);
-    println("Total increases: %d", increases);
+    printf("Total increases: %d\f", increases);
 
     return 0;
 }

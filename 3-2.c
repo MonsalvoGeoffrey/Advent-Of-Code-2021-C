@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "lib/qol.h"
 #include "lib/vector.c"
+#include <stdint.h>
 
 #define SIZE 12
 
@@ -11,11 +11,11 @@ int main()
 {
     FILE *input = fopen("d3.txt", "r");
     char line[255];
-    uint16 oxygen = 0;
-    uint16 co2 = 0;
+    uint16_t oxygen = 0;
+    uint16_t co2 = 0;
     Vector *oxygenList = Vector_new(sizeof(char[SIZE + 1]));
     Vector *co2List = Vector_new(sizeof(char[SIZE + 1]));
-    uint32 life = 0;
+    uint32_t life = 0;
 
     while (fgets(line, 255, input) != NULL)
     {
@@ -26,13 +26,13 @@ int main()
         Vector_push(co2List, value);
     }
 
-    uint8 cursor = 0;
+    uint8_t cursor = 0;
     while (Vector_length(oxygenList) > 1)
     {
-        uint16 halfCount = Vector_length(oxygenList);
+        uint16_t halfCount = Vector_length(oxygenList);
         halfCount = (halfCount >> 1) + (halfCount % 2);
-        uint16 oneCount = 0;
-        for (int16 i = Vector_length(oxygenList) - 1; i >= 0; i--)
+        uint16_t oneCount = 0;
+        for (int16_t i = Vector_length(oxygenList) - 1; i >= 0; i--)
         {
             if (((char *)Vector_get(oxygenList, i))[cursor] == '1')
             {
@@ -44,7 +44,7 @@ int main()
         {
             charToKeep = '1';
         }
-        for (int16 i = Vector_length(oxygenList) - 1; i >= 0; i--)
+        for (int16_t i = Vector_length(oxygenList) - 1; i >= 0; i--)
         {
             if (((char *)Vector_get(oxygenList, i))[cursor] != charToKeep)
             {
@@ -57,10 +57,10 @@ int main()
     cursor = 0;
     while (Vector_length(co2List) > 1)
     {
-        uint16 halfCount = Vector_length(co2List);
+        uint16_t halfCount = Vector_length(co2List);
         halfCount = (halfCount >> 1) + (halfCount % 2);
-        uint16 oneCount = 0;
-        for (int16 i = Vector_length(co2List) - 1; i >= 0; i--)
+        uint16_t oneCount = 0;
+        for (int16_t i = Vector_length(co2List) - 1; i >= 0; i--)
         {
             if (((char *)Vector_get(co2List, i))[cursor] == '1')
             {
@@ -72,7 +72,7 @@ int main()
         {
             charToKeep = '1';
         }
-        for (int16 i = Vector_length(co2List) - 1; i >= 0; i--)
+        for (int16_t i = Vector_length(co2List) - 1; i >= 0; i--)
         {
             if (((char *)Vector_get(co2List, i))[cursor] != charToKeep)
             {
@@ -88,9 +88,9 @@ int main()
     co2 = strtol((char *)Vector_get(co2List, 0), &endptr, 2);
     life = oxygen * co2;
 
-    println("Oxygen: %d", oxygen);
-    println("Co2: %d", co2);
-    println("Life Support: %d", life);
+    printf("Oxygen: %d\n", oxygen);
+    printf("Co2: %d\n", co2);
+    printf("Life Support: %d\n", life);
 
     Vector_free(oxygenList);
     Vector_free(co2List);
